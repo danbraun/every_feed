@@ -1,0 +1,338 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+	background: #4E5869;
+	margin: 0;
+	padding: 0;
+	color: #000;
+	background: url("../images/background_douthat_1080.jpg") no-repeat top left;
+}
+
+/* ~~ Element/tag selectors ~~ */
+ul, ol, dl { /* Due to variations between browsers, it's best practices to zero padding and margin on lists. For consistency, you can either specify the amounts you want here, or on the list items (LI, DT, DD) they contain. Remember that what you do here will cascade to the .nav list unless you write a more specific selector. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+	margin-bottom:4px;
+	padding-right: 5px;
+	padding-left: 5px; /* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an alternate method. */
+}
+a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+	border: none;
+}
+
+/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+a:link {
+	color:#414958;
+	text-decoration: underline; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+}
+a:visited {
+	color: #4E5869;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+	text-decoration: none;
+}
+
+/* ~~ this container surrounds all other divs giving them their percentage-based width ~~ */
+.container {
+	width: 88%;
+	max-width: 1260px;/* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
+	min-width: 780px;/* a min-width may be desirable to keep this layout from getting too narrow. This keeps line length more readable in the side columns. IE6 does not respect this declaration. */
+	margin: 0 0 0 66px; /* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
+}
+
+/* ~~ This is the layout information. ~~ 
+
+1) Padding is only placed on the top and/or bottom of the div. The elements within this div have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side padding or border to the div itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the div and place a second div within it with no width and the padding necessary for your design.
+
+*/
+.content {
+	padding: 10px 0 0 5px;
+	margin: 0 0 0 -20px;
+}
+
+/* ~~ This grouped selector gives the lists in the .content area space ~~ */
+.content ul, .content ol { 
+	padding: 0 15px 15px 40px; /* this padding mirrors the right padding in the headings and paragraph rule above. Padding was placed on the bottom for space between other elements on the lists and on the left to create the indention. These may be adjusted as you wish. */
+}
+
+/* ~~ miscellaneous float/clear classes ~~ */
+.fltrt {  /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page. The floated element must precede the element it should be next to on the page. */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* this class can be placed on a <br /> or empty div as the final element following the last floated div (within the #container) if the overflow:hidden on the .container is removed */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+
+/* -- Weather Container -- */
+#weather_container {
+/*	background:url("../images/grad-bg.jpg") repeat-x;*/
+	width: 70%;
+	height: 300px;
+	position:relative;
+	/*top:100px;*/
+	left:0px;
+/*	float:left;*/
+}
+#weather_container-banner{
+	float:left;
+	width:60%;
+}
+#current_obs_container {
+	width:200px;
+	height:200px;
+	float:left;
+	text-align:center;
+	margin:0;
+	position: inherit;
+}
+#current_obs_container h1{
+	font-size: 1.2em;
+	line-height:28px;
+}
+#current_obs_container img {
+	border: 3px solid #CC9900;
+	margin: 4px 0px;
+}
+#forecast_container {
+	width: 100%;
+	margin:0 0 0 150px;
+}
+.forecast_box {
+	position:relative;
+	text-align: center;
+	width: 108px;
+	height: 150px;
+	clear: none;
+	margin-top: 0;
+	margin-bottom: 0;
+	margin: 0;
+	padding: 0 5px;
+	float: left;
+	
+}
+.forecast_desc {
+	font-size: 0.9em;
+}
+.txt-ctr-caps {
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+.forecast_header {
+	height: 28px;
+	font-size: 15px;
+}
+.forecast_box img {
+	border: 3px solid #CC9900;
+	margin: 10px 0;
+}
+.temp_container {
+	bottom:0;
+}
+.temp_low, .temp_high {
+	font-weight:bold;
+	font-size:90%;
+}
+.temp_low {
+	color: blue;
+}
+.temp_high {
+	color: red;
+}
+
+/* -- Radar -- */
+#radar {
+	position: relative;
+	top:-294px;
+	width: 440px;
+	height: 387px;
+	overflow: hidden;
+/*	padding: 20px 12px 10px 0;*/
+	margin:0;
+	background: url("../images/radar-border-bg.png") top left no-repeat;
+	float:right;
+	left:80px;
+}
+#radar img{
+	width: 388px;
+	height: 354px;
+	padding: 6px 0 0 26px;
+}
+#radar .parkMarker {
+	z-index: 1;
+	width: 470px;
+	height: 420px;
+	position: absolute;
+	top:-57px;
+	left: -99px;
+}
+#radar .parkMarker .douthat {
+    background: url("../images/park-douthat-marker.png") top left no-repeat;
+}
+
+/* -- Flickr -- */
+#flickr_container {
+
+	width: 70%;
+	height: 400px;
+	position:relative;
+	top:-20px;
+	left:-6px;
+/*	float:left;*/
+}
+#flickr {
+	background: url("../images/flickr-border-bg.png") top left no-repeat;
+	width:500px;
+	height:410px;
+	position:relative;
+	top:82px;
+	left:24px;
+}
+#flickrSlideshow {
+/*	border: 1px solid black;*/
+	position: absolute;
+	left: 24px;
+	top: 6px;
+	width: 373px;
+	height: 313px;
+	overflow: hidden;
+}
+#flickrSlideshow-banner {
+	float:left;
+	width:60%;
+}
+#flickrSlideshow img{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+}
+#flickrCaption {
+	background:left top url("../images/blackoverlay.png") repeat-x;
+	position:absolute;
+	width:592px;
+	height:96px;
+	bottom:0;
+	z-index:1;
+}
+#flickrCaption p {
+	color: white;
+	margin:30px 0 0 20px;
+}
+
+/* -- Events & Alerts -- */
+#alerts {
+	position:relative;
+	top:-337px;
+	left:60px;
+	width:1120px;
+	height:180px;
+	color:black;
+	overflow:hidden;
+	float:right;
+}
+#alerts-banner {
+	float:right;
+	width:68%;
+}
+#alertsHeader {
+	color:white;
+	position:absolute;
+	top:20px;
+	left:650px;
+	font-family: Arial, Helvetica, Geneva, sans-serif;
+	font-weight: bold;
+	text-shadow: 2px 2px 4px #000;
+}
+#alertTitle {
+	position:absolute;
+	top:60px;
+	left:412px;
+	font-weight:bold;
+	font-family: Arial, Helvetica, Geneva, sans-serif;
+}
+#alertMessage {
+	position:absolute;
+	top:90;
+	left:411px;
+	font-family: Arial, Helvetica, Geneva, sans-serif;
+	color:black;
+	margin: 0 20px 0 0;
+}
+#events {
+	position:relative;
+	top:-299px;
+	left:60px;
+	width:1120px;
+	height:180px;
+	color:black;
+	overflow:hidden;
+	float:right;
+}
+#events-banner {
+	float:right;
+	width:68%;
+}
+#eventsHeader {
+	color:white;
+	position:absolute;
+	top:10px;
+	left:1000px;
+	font-family: Arial, Helvetica, Geneva, sans-serif;
+	font-weight: bold;
+	text-shadow: 2px 2px 4px #000;
+}
+#eventDate {
+	position:absolute;
+	top:20px;
+	left:628px;
+}
+p.eventTitle {
+	font-family: Arial, Helvetica, Geneva, sans-serif;
+	position:absolute;
+	top:60px;
+	left:406px;
+	font-weight:bold;
+}
+p.eventSummary {
+	position:absolute;
+	top:95;
+	left:408px;
+}
+p.eventDate {
+	text-shadow: 2px 2px 4px #000;
+	color:white;
+	font-weight: bold;
+}
+
+/* -- Time -- */
+#timedate {
+	position:absolute;
+	text-align:center;
+/*	background:gray;*/
+	width:378px;
+	height:144;
+	top:300px;
+	left:500px;
+}
+#clock {
+	color:black;
+	font-size: 2.8em;
+}
+#date {
+	color:black;
+	font-size: 1.8em;
+}
